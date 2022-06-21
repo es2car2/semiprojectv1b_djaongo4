@@ -1,10 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+{% block title %}
+
+    member/join
+
+{% endblock %}
+
+
+
+
+    {% block style %}
+
+        /* #main { height: 500px } */
+        input:focus { background: khaki}
+        input:hover { background: tomato}
+        /* 로그인 폼 배치하기 */
+        form { border: 0px solid crimson; width: 350px; margin: 150px auto}
+
+        /* 회원가입 폼 요소에 여백주기 */
+
+        form div { margin-top: 10px }
+
+        /* 회원가입 폼 라벨에 너비 설정 */
+        /* display - 인라인요소를 블록요소로 변경 */
+        form label { display:inline-block;
+        width: 120px; font-weight: bold}
+
+        /* 회원가입 폼 버튼 위치 설정 */
+        form button:first-child { margin-left: 10px}
+
+        #warp { border: 0px solid crimson; width: 1250px; margin: 0 auto}
+
+
+
+    {% endblock %}
+
+
+
+
+{% block content %}
+
+        <h1>회원가입</h1>
+        <br>
+        <br>
+        <br>
+        <nav>
+            <ul>
+                <form name="joinfrm" method="post">
+                    <div>
+                        <label for="userid">아이디</label>
+                        <input type="text" name="userid" id="userid">
+                    </div>
+                    <div>
+                        <label for="password">비밀번호</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div>
+                        <label for="re_password">비밀번호확인</label>
+                        <input type="password" name="re_password" id="re_password">
+                    </div>
+                    <div>
+                        <label for="name">이름</label>
+                        <input type="password" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="email">이메일</label>
+                        <input type="password" name="email" id="email">
+                    </div>
+     <!-- 편집하기 편하게 하기 위해서 빈 라벨을 넣어줌 -->
+                    <div><label></label>
+                         <button type="submit">입력완료</button>
+                         <button type="reset">다시입력</button>
+                    </div>
+                </form>
+            </ul>
+        </nav>
+        <hr>
+
+     {% endblock %}
+
+    {% block jscript %}
+
+
+    {% endblock %}

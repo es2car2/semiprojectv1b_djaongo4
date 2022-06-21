@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Python 프로젝트 v1</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <style>
+{% extends 'layout/base.html' %}
+
+{% block title %} index {% endblock %}
+
+{% block style %}
+
+
         #main { height: 500px }
                 /* 동적 의사 선택자 : link, visited, hover, active, focus */
         a:link { color: crimson; text-decoration: none} /* 링크 방문 전 */
@@ -33,36 +33,15 @@
         hr { background-color: black; height: 1px}
 
 
+{% endblock %}
 
 
 
-    </style>
-</head>
-<body>
-<div id="warp">
-    <header>
-        <h1>Python 웹프로잭트 v1</h1>
-        <nav>
-            <ul id="nav_ul">
-                <li><a href="index.html">home</a></li>
-                <li><a href="login.html">회원가입</a></li>
-                <li><a href="join.html">로그인</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="myinfo.html">회원정보</a></li>
 
-            </ul>
-        </nav>
-        <hr>
-    </header>
-    <div id="main"></div>
-   <center>
-    <footer>
-        <hr>
-        <span>copyright &copy; 2022. es.car . all rights reserved.</span>>
-        <!-- <P> 태그를 안쓰면 붙어서 보여짐 -->
-    </footer>
-   </center>
 
-</div>
-</body>
-</html>
+{% block content %} main {% endblock %}
+
+
+
+{% block jscript %} {% endblock %}
+

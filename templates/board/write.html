@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+
+{% block title %}
+
+        board/write
+
+{% endblock %}
+
+
+{% block style %}
+
+        #main { height: 100px }
+
+        input:focus { background: khaki}
+        input:hover { background: tomato}
+        textarea:focus { background: khaki}
+
+        #warp { border: 0px solid crimson; width: 1250px; margin: 0 auto}
+
+        form {  width: 60%; margin: 65px auto 10px;}
+
+        form div {margin-top : 10px }
+        form label { display: inline-block; width: 120px; text-align: right; font-weight: bold; margin-right: 10px }
+
+        .dragup { vertical-align: top; margin-top: 5px}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+        <h2>게시판 새그릈기</h2>
+    <div>
+        <form name="boardfrm" method="post" action="board.do">
+            <div>
+                <label for="title">제목</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div>
+                <label for="title">작성자</label>
+                <span>아이디</span>
+            </div>
+            <div>
+                <label for="contents" class="dragup">본문</label>
+                    <textarea name="contents" id="contents"
+                              rows="10" cols="50"
+                              style="resize: none"></textarea>
+            </div>
+            <div>
+                <label></label>
+                    <button type="submit">입력완료</button>
+                    <button type="reset">다시입력</button>
+            </div>
+        </form>
+    </div>
+
+
+    {% endblock %}
+
+
+    {% block jscript %}
+
+
+    {% endblock %}

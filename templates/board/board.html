@@ -1,10 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    board/list
+{% endblock %}
+
+    {% block style %}
+
+
+        /* 로그인 폼 배치하기 */
+        form { border: 0px solid crimson; width: 350px; margin: 150px auto}
+
+
+        <!-- 모든 페이지에 다 설정 해야함 -->
+        #main { height: auto; min-height: 500px}
+
+        #warp { border: 0px solid crimson; width: 1250px; margin: 0 auto}
+
+
+        #overflow td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+                                /* 넘치는 텍스트를 말줄임 처리 */
+
+        /* 페이지네이션의 페이지항목 간격 재조정 */
+        #pgnav li { margin-left: 10px}
+
+        /* 페이지네이션 가운데 정렬 */
+        #pgnav { text-align: center; margin-left: -100px}
+
+        /* 현재 페이지에 대한 스타일 지정 */
+        .cpage { font-weight: bold; font-size: 50px;
+                    color: crimson}
+
+        /* 게시판 목록 테이블 가운데 정렬 */
+        table { width: 65%; margin: 65px auto -10px;
+        border-collapse: collapse; table-layout: fixed }
+
+        /* #board { border: 1px solid black; border-collapse: collapse;} */
+       /* #board td { width: 550px; text-overflow: clip; text-align: left} */
+
+        td, th { border: 1px solid black; padding: 10px; text-align: center}
+
+        /* td:first-child{ width: 5%;  } */
+        td:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+
+
+        .button { text-align: right; border-top: none; border-left: none; border-right: none}
+
+
+    {% endblock %}
+
+
+{% block content %}
+
+        <h2>게시판</h2>
+
+            <table id="board">
+                <tr>
+                    <td colspan="5" class="button">
+                        <button type="submit" onclick="location.href='write.html'">새글쓰기</button>
+                    </td>
+                </tr>
+                <colgroup>
+                 <!-- 테이블 컬럼 너비 지정 -->
+                    <col style="width: 10%">
+                    <col style="">
+                    <col style="width: 15%">
+                    <col style="width: 15%">
+                    <col style="width: 10%">
+                </colgroup>
+                <tr id="tr1">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회</th>
+                </tr>
+                <tr id="tr2">
+                    <td>1</td>
+                    <td><a href="view.html?bno=1"> マンコに入れてください.Yewonのボジの中で出してください.</a></td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr3">
+                    <td>2</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr4">
+                    <td>3</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr5">
+                    <td>4</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr6">
+                    <td>5</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr7">
+                    <td>6</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr8">
+                    <td>7</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+                <tr id="tr9">
+                    <td>8</td>
+                    <td>マンコに入れてください.Yewonのボジの中で出してください</td>
+                    <td>nakadasiyewon</td>
+                    <td>20220527</td>
+                    <td>6974</td>
+                </tr>
+            </table>
+
+
+                <ul id="pgnav">
+                    <li>이전</li>
+                    <li class="cpage">1</li><li>2</li>
+                    <li>3</li><li>4</li>
+                    <li>5</li><li>6</li>
+                    <li>7</li><li>8</li>
+                    <li>9</li><li>10</li>
+                    <li>다음</li>
+                </ul>
+
+    {% endblock %}
+
+    {% block jscript %}
+
+
+    {% endblock %}
