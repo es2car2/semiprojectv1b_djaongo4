@@ -42,35 +42,44 @@
 {% block content %}
 
         <h1>회원가입</h1>
+
         <br>
         <br>
         <br>
         <nav>
             <ul>
-                <form name="joinfrm" method="post">
+                <form name="joinfrm" id="joinfrm" method="post">
+
+                    <div style="color: crimson">
+                        {# Django built-in template fillter #}
+                                {{ error|safe }}
+
+                    </div>
+
+                    {% csrf_token %} {# 동일출처origin 확인용 쿠키 생성 #}
                     <div>
                         <label for="userid">아이디</label>
-                        <input type="text" name="userid" id="userid">
+                        <input type="text" name="userid" id="userid" value="{{ form.userid }}">
                     </div>
                     <div>
-                        <label for="password">비밀번호</label>
-                        <input type="password" name="password" id="password">
+                        <label for="passwd">비밀번호</label>
+                        <input type="password" name="passwd" id="passwd">
                     </div>
                     <div>
-                        <label for="re_password">비밀번호확인</label>
-                        <input type="password" name="re_password" id="re_password">
+                        <label for="repasswd">비밀번호확인</label>
+                        <input type="password" name="repasswd" id="repasswd">
                     </div>
                     <div>
                         <label for="name">이름</label>
-                        <input type="password" name="name" id="name">
+                        <input type="password" name="name" id="name" value="{{ form.name }}">
                     </div>
                     <div>
                         <label for="email">이메일</label>
-                        <input type="password" name="email" id="email">
+                        <input type="password" name="email" id="email" value="{{ form.email }}">
                     </div>
      <!-- 편집하기 편하게 하기 위해서 빈 라벨을 넣어줌 -->
                     <div><label></label>
-                         <button type="submit">입력완료</button>
+                         <button type="submit" id="joinbtn">입력완료</button>
                          <button type="reset">다시입력</button>
                     </div>
                 </form>
@@ -81,6 +90,47 @@
      {% endblock %}
 
     {% block jscript %}
+
+        <script>
+
+            const joinfrm = document.querySelector('#joinbtn')
+            joinfrm.addEventListener('submit',(e) => {
+                let userid = document.joinfrm.userid;
+                let passwd = document.joinfrm.passwd;
+                let repasswd = document.joinfrm.repasswd;
+                let name = document.joinfrm.name;
+                let email = document.joinfrm.email;
+
+                if (userid.value == '') {
+                    alert('아이디 입력');
+                    userid.focus();
+                    e.preventDefault();
+                } else if (passwd.value == '') {
+                    alert('비밀번호 입력');
+                    passwd.focus();
+                    e.preventDefault();
+                } else if (repasswd.value == '') {
+                    alert('비밀번호 다시 입력');
+                    repasswd.focus();
+                    e.preventDefault();
+                } else if (name.value == '') {
+                    alert('이름 입력');
+                    name.focus();
+                    e.preventDefault();
+                } else if (email.value == '') {
+                    alert('이메일 입력');
+                    email.focus();
+                    e.preventDefault();
+                } else if (passwd.value !== repasswd.value) {
+                    alert('비밀번호 일치하지 않음');
+                    passwd.focus();
+                    e.preventDefault();
+                }
+            })
+
+
+
+        </script>
 
 
     {% endblock %}

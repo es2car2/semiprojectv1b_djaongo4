@@ -4,9 +4,10 @@ from django.db import models
 
 
 # create your models here.
+# Member 테이블의 구조와 유사하게 member 모델 정의 - Model
 
 class Member(models.Model):
-    id = models.AutoField(PRIMARY_KEY=True)
+    id = models.AutoField(primary_key=True)
     userid = models.CharField(max_length=18, unique=True)
     passwd = models.CharField(max_length=18)
     name = models.CharField(max_length=5)
