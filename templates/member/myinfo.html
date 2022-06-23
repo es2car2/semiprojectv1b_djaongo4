@@ -32,13 +32,24 @@
 
 
 {% block content %}
+    {# 로그인을 안했다면 회원정보 페이지는 보이지 않게 #}
+
+    {% if not request.session.userid %}
+        <script>
+
+            alert('회원전용 페이지')
+            location.href='/login';
+
+        </script>
+
+    {% endif %}
 
         <h1>회원정보</h1>
             <table>
-                <tr><th>아이디</th><td>아이디입력</td></tr>
-                <tr><th>이름</th><td>이름이름</td></tr>
-                <tr><th>이메일</th><td>이메일입력</td></tr>
-                <tr><th>가입일</th><td>가입일입력</td></tr>
+                <tr><th>아이디</th><td>{{ member.userid }}</td></tr>
+                <tr><th>이름</th><td>{{ member.name }}</td></tr>
+                <tr><th>이메일</th><td>{{ member.email }}</td></tr>
+                <tr><th>가입일</th><td>{{ member.regdate }}</td></tr>
             </table>
 
      {% endblock %}
