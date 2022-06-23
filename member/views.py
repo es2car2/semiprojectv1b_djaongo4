@@ -40,6 +40,10 @@ def join(request):
             # Member 객체에 담은 회원정보를 member 테이블에 저장
             member.save()
 
+
+            # 회원가입 성공시 joinok.html 띄움
+            returnPage = 'member/joinok.html'
+
         # 유효성 검사를 실패하는 경우 오류내용을 join.html에 표시하기 위해
         # dict 변수에 저장
         # 이미 입력했던 회원정보를 다시 join.html에 표시하기 위해
