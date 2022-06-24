@@ -85,6 +85,19 @@ def login(request):
 
                 request.session['userid'] = form['userid']
 
+
+                # 로그인한 사용자의 id도 조회해서
+                # 세션변수에 저장해둠.
+
+                id = Member.objects.all().filter(userid=form['userid']).values_list('id')[0][0]
+                # .values_list('id')[0][0]를 입력하면 리스트에 저장된 'id' 에 메겨진 userid의 id가 나옴
+
+                request.session['userid'] = form['userid'] = id
+
+                print(id)
+
+
+
                 return redirect('/') # index 페이지로 이동
 
             else:

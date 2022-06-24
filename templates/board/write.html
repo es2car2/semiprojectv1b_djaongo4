@@ -58,10 +58,13 @@
                     <button type="button" id="boardbtn">입력완료</button>
                     <button type="reset">다시입력</button>
             </div>
+                <input type="hidden" name="userid"
+                       value="{{ request.session.userid }}">
+
         </form>
     </div>
 
-    <input type="hidden" name="userid" value="아이디">
+
 
 
     {% endblock %}
