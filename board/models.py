@@ -6,11 +6,12 @@ from datetime import datetime
 from member.models import Member
 
 
-class board(models.Model):
+class Board(models.Model):
     id=models.AutoField(primary_key=True)
     title=models.CharField(max_length=100)
-    userid=models.ForeignKey(Member, db_column='userid',
+    member=models.ForeignKey(Member, related_name='board',
                              on_delete=models.CASCADE)
+    # 왜래키 설정을 안해도 되긴 함.
     regdate=models.DateTimeField(default=datetime.now)
     views=models.IntegerField(default=0)
     contents=models.TextField(null=False, blank=False)

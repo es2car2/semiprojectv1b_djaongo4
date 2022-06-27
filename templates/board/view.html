@@ -17,17 +17,18 @@
                      border-collapse: collapse; }
         th, td { padding: 10px; }
         th:first-child { width: 10% }
-        td:nth-child(4) th {
+
+        td:nth-child(5) th {
             vertical-align: top;
         }
-        tr:nth-child(4) td {
+        tr:nth-child(5) td {
             border: 1px solid coral;
              vertical-align: top; }
 
         div { height: 300px; overflow: auto; padding: 5px }
 
 
-        tr:nth-child(5) td { text-align: right}
+        tr:nth-child(6) td { text-align: right}
 
     {% endblock %}
 
@@ -38,53 +39,73 @@
         <h2>게시판 본문글</h2>
             <table>
                 <tr>
-                    <th>제목</th><td>マンコに入れてください</td>
+                    <th>제목</th>
+                    <!-- マンコに入れてください -->
+                    <td>{{ bd.title }}</td>
                 </tr>
                 <tr>
-                    <th>작성자</th><td>nakadasiyewon</td>
+                    <th>작성자</th><td>{{ bd.member.userid }}</td>
                 </tr>
                 <tr>
-                    <th>작성일</th><td>20220527</td>
+                    <th>작성일</th><td>{{ bd.regdate|date:'Y-m-d H:i:s' }}</td>
+                </tr>
+                <tr>
+                    <th>조회수</th><td>{{ bd.views}}</td>
                 </tr>
                 <tr>
                     <th>본문</th>
-                        <td>
-                            <div class="box">
-                                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,中に出して,
-                        </div>
-                     </td>
+                    <td>            <!-- 中に出して -->
+                        <div class="box">{{ bd.contents }}</div>
+                        <!-- style="white-space: pre; 공백을 그대로 보여줌 -->
+                    </td>
                 </tr>
 
                 <tr>
                     <td colspan="2">
-                        <button type="button" onclick="location.href='board.html'">목록으로 이동</button>
-                        <button type="button" onclick="location.href='write.html'">새글쓰기</button>
-                        <button type="button">수정하기</button>
-                        <button type="button">삭제하기</button>
+                        <button type="button" id="listbtn">목록으로 이동</button>
+                        <button type="button" id="wrtbtn">새글쓰기</button>
+                        <button type="button" id="mdfbtn">수정하기</button>
+                        <button type="button" id="rmvbtn">삭제하기</button>
                     </td>
                 </tr>
 
 
 
             </table>
+        <form name="board">
+            <input type="hidden" name="bno" value="{{ bd.id }}">
+        </form>
 
     {% endblock %}
 
    {% block jscript %}
+       <script>
+
+        const contents = document.querySelector('.box');
+        const mdfbtn = document.querySelector('#mdfbtn');
+        const rmvbtn = document.querySelector('#rmvbtn');
+        const bno = document.board.bno.value;
+
+
+        rmvbtn.addEventListener('click', () => {
+            if (confirm('진짜로 삭제??')) {
+                location.href = '/remove?bno=' + bno;
+            }
+        })
+
+        mdfbtn.addEventListener('click', () => {
+            if (confirm('진짜로 수정??')) {
+                location.href = '/modify?bno=' + bno;
+            }
+        })
+
+        {#onclick="location.href='board.html'"#}
+        {#목록,새글쓰기 수정 및 코드 추가 해야함#}
+
+
+        contents.setAttribute('style', "white-space: pre;");
+
+       </script>
 
 
     {% endblock %}

@@ -32,7 +32,7 @@
 
 
 
-        <h2>게시판 새글쓰기</h2>
+        <h2>게시판 본문글 수정하기</h2>
     <div>
         <form name="boardfrm" method="post"> <!--action="board.do" -->
             {% csrf_token %}
@@ -41,25 +41,27 @@
 
             <div>
                 <label for="title">제목</label>
-                <input type="text" name="title" id="title">
+                <input type="text" name="title" id="title"
+                value="{{ bd.title }}">
             </div>
             <div>
                 <label for="title">작성자</label>
-                <span>아이디</span>
+                <span>{{ bd.member.userid }}</span>
             </div>
             <div>
                 <label for="contents" class="dragup">본문</label>
                     <textarea name="contents" id="contents"
                               rows="10" cols="50"
-                              style="resize: none"></textarea>
+                              style="resize: none">{{ bd.contents }}</textarea>
             </div>
             <div>
                 <label></label>
-                    <button type="button" id="boardbtn">입력완료</button>
+                    <button type="button" id="mdfokbtn">수정완료</button>
                     <button type="reset">다시입력</button>
             </div>
-                <input type="hidden" name="memberid"
-                       value="{{ request.session.userid }}">
+            {# 수정할 게시글의 글번호를 hidden으로 설정 #}
+                <input type="hidden" name="bno"
+                       value="{{ bd.id }}">
 
         </form>
     </div>
@@ -74,8 +76,8 @@
 
         <script>
 
-            const boardbtn = document.querySelector('#boardbtn')
-            boardbtn.addEventListener('click', () => {
+            const boardbtn = document.querySelector('#mdfokbtn')
+            mdfokbtn.addEventListener('click', () => {
                 const title = document.boardfrm.title;
                 const contents = document.boardfrm.contents;
                 if (title.value == '') {
